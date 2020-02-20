@@ -30,11 +30,6 @@ This command runs the following script:
 # \___/|___/_/\_\   |_|_| |_|___/\__\__,_|_|_|
 
 
-echo "I  ❤️  🍎"
-echo "Mac OS Install Setup Script"
-echo "By Nina Zakharenko"
-echo "Follow me on twitter! https://twitter.com/nnja"
-
 # Some configs reused from:
 # https://github.com/ruyadorno/installme-osx/
 # https://gist.github.com/millermedeiros/6615994
@@ -183,95 +178,30 @@ done
 
 echo "Starting brew app install..."
 
-### Window Management
-# Todo: Try Divvy and spectacles in the future
-brew cask install sizeup  # window manager
-
-# Start SizeUp at login
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
-
-# Don’t show the preferences window on next start
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
-
-
 ### Developer Tools
 brew cask install iterm2
-brew cask install dash
-brew install ispell
-
+brew cask install intellij-idea
 
 ### Development
 brew cask install docker
-brew install postgresql
-brew install redis
-
 
 ### Command line tools - install new ones, update others to latest version
 brew install git  # upgrade to latest
-brew install git-lfs # track large files in git https://github.com/git-lfs/git-lfs
 brew install wget
 brew install zsh # zshell
-brew install tmux
-brew install tree
-brew link curl --force
-brew install grep --with-default-names
-brew install trash  # move to osx trash instead of rm
-brew install less
-
 
 ### Python
 brew install python
 brew install pyenv
 
+brew cask install slack
 
-### Microcontrollers & Electronics
-brew install avrdude
-brew cask install arduino
-# Manually install teensyduino from:
-# https://www.pjrc.com/teensy/td_download.html
-
-
-### Dev Editors 
-brew cask install visual-studio-code
-brew cask install pycharm
-### spacemacs github.com/syl20bnr/spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-brew tap d12frosted/emacs-plus
-brew install emacs-plus --HEAD --with-natural-title-bars
-brew linkapps emacs-plus
-
-
-### Writing
-brew cask install evernote
-brew cask install macdown
-brew cask install notion
-
-
-### Conferences, Blogging, Screencasts
-brew cask install deckset
-brew cask install ImageOptim  # for optimizing images
-brew cask install screenflow
-
-
-### Productivity
-brew cask install wavebox
-brew cask install google-chrome
-brew cask install alfred
-brew cask install dropbox
-
-brew cask install timing  # time and project tracker
-brew cask install keycastr  # show key presses on screen (for gifs & screencasts)
-brew cask install betterzip
-brew cask install caffeine  # keep computer from sleeping
-brew cask install skitch  # app to annotate screenshots
-brew cask install muzzle
-brew cask install flux
-
-
-### Keyboard & Mouse
-brew cask install karabiner-elements  # remap keys, emacs shortcuts
-brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
-
+# firefox
+# clockify
+# viscosity
+# BTT
+# alftered
+# telegram, signal
 
 ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode # syntax highlighting in preview
@@ -281,86 +211,13 @@ brew cask install quicklook-json  # preview json files
 brew cask install epubquicklook  # preview epubs, make nice icons
 brew cask install quicklook-csv  # preview csvs
 
-
-### Chat / Video Conference
-brew cask install slack
-brew cask install microsoft-teams
-brew cask install zoomus
-brew cask install signal
-
-
-### Music and Video
-brew cask install marshallofsound-google-play-music-player
-brew cask install vlc
-
-
 ### Run Brew Cleanup
 brew cleanup
 
 
-#############################################
-### Fonts
-#############################################
-
-echo "Installing fonts..."
-
-brew tap caskroom/fonts
-
-### programming fonts
-brew cask install font-fira-mono-for-powerline
-brew cask install font-fira-code
-
-### SourceCodePro + Powerline + Awesome Regular (for powerlevel 9k terminal icons)
-cd ~/Library/Fonts && { curl -O 'https://github.com/Falkor/dotfiles/blob/master/fonts/SourceCodePro+Powerline+Awesome+Regular.ttf?raw=true' ; cd -; }
-
-
-#############################################
-### Installs from Mac App Store
-#############################################
-
-echo "Installing apps from the App Store..."
 
 ### find app ids with: mas search "app name"
-brew install mas
-
-### Mas login is currently broken on mojave. See:
-### Login manually for now.
-
-cecho "Need to log in to App Store manually to install apps with mas...." $red
-echo "Opening App Store. Please login."
-open "/Applications/App Store.app"
-echo "Is app store login complete.(y/n)? "
-read response
-if [ "$response" != "${response#[Yy]}" ]
-then
-	mas install 907364780  # Tomato One - Pomodoro timer
-	mas install 485812721  # Tweetdeck
-	mas install 668208984  # GIPHY Capture. The GIF Maker (For recording my screen as gif)
-	mas install 1351639930 # Gifski, convert videos to gifs
-	mas install 414030210  # Limechat, IRC app.
-else
-	cecho "App Store login not complete. Skipping installing App Store Apps" $red
-fi
-
-
-#############################################
-### Install few global python packages
-#############################################
-
-echo "Installing global Python packages..."
-
-pip3 install --upgrade pip
-pip3 install --user pylint
-pip3 install --user flake8
-
-
-#############################################
-### Set OSX Preferences - Borrowed from https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-#############################################
-
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+brew install magnet
 
 
 ##################
